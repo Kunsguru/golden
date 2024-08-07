@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livewell Housing Solutions Ltd</title>
+    <style>
+        /* Header Styling */
+        header {
+            text-align: center;
+            padding: 1em;
+            background-color: #4CAF50;
+            color: white;
+            position: relative;
+            width: 100%;
+            top: 0;
+        }
+
+        /* General Section Styling */
+        .incentive, .form-section, .registration, .code-section, .referral-form, .narration {
+            padding: 1em;
+            margin: 1em;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* Button Styling */
+        .cta-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Hidden Section */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Livewell Housing Solutions Ltd</h1>
+        <p><strong>Motto</strong>: <i>...own your tomorrow</i>.</p>
+    </header>
+
+    <!-- Narration Section -->
+    <section id="narrationSection" class="narration">
+        <p>Earn extra income while marketing houses for sale as a marketer for Livewell Housing Solutions Ltd. Get your agent commission for property rentals, leases, and sales. Join us to sell our three core services: Ease Rent, Lease Plan, and Cooperative Housing.</p>
+        <p>Invite your friends, neighbors, workmates, course mates, and anyone else to join. Share on your online social pages. Earn incentives when someone registers as a member with a 2,000 Naira annual fee.</p>
+    </section>
+
+    <!-- Incentive Program Section -->
+    <section id="incentiveSection" class="incentive">
+        <h2>Annual Membership Incentive Program</h2>
+        <p>To subscribe as a member of Livewell Housing Solutions Ltd with an amount of 2,000 Naira annually so registered members can enjoy attractive benefits!</p>
+        <ul>
+            <li><strong>Earn 500 Naira</strong> for each successful referral of a new member.</li>
+            <li><strong>Get a 7,500 Naira Bonus</strong> when you refer 10 or more members!</li>
+            <li><strong>Special Rewards</strong> for top referrers, including gadgets and gift vouchers.</li>
+            <li>Exclusive access to member-only services and events.</li>
+        </ul>
+    </section>
+    
+    <!-- Back Button -->
+    <button class="cta-button" onclick="moveToSection('initial')">Back</button>
+
+    <!-- Get Started Button -->
+    <button class="cta-button" onclick="moveToSection('registration')">Get Started</button>
+
+    <!-- Registration Section -->
+    <section id="registration" class="registration hidden">
+        <h2>Become a Referred Member</h2>
+        <input type="checkbox" id="agreeCheckbox" onclick="toggleGetStarted()"> I agree to the terms and conditions.
+        <button class="cta-button" id="getStartedBtn" disabled onclick="moveToSection('code-section')">Get Started</button>
+    </section>
+
+    <!-- Rental Code Section -->
+    <div id="code-section" class="code-section hidden">
+        <label for="rentalCode">Enter Rental Serial Code:</label>
+        <input type="text" id="rentalCodeInput" placeholder="Enter your rental code" required>
+        <button class="cta-button" id="checkCodeBtn" onclick="checkCode()">Check Code</button>
+        <p id="noCodeMessage" class="hidden">Don't have a code? <a href="#" id="showRegistrationFormLink" onclick="showRegistrationForm()">Register here</a></p>
+        <button class="cta-button" onclick="moveToSection('initial')">Back</button>
+    </div>
+
+    <!-- Membership Form Section -->
+    <section id="formSection" class="form-section hidden">
+        <h2>Membership</h2>
+        <form id="membershipForm" onsubmit="submitForm('membershipForm', 'Livewell Membership'); return false;">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" placeholder="Enter your full name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" placeholder="Enter your phone number" required>
+
+            <label for="address">Residential Address:</label>
+            <input type="text" id="address" placeholder="Enter your address" required>
+
+            <label for="rentalCode">Rental Serial Code:</label>
+            <input type="text" id="rentalCode" placeholder="Rental Serial Code" readonly required>
+
+            <button type="submit" class="cta-button">Submit</button>
+        </form>
+        <button class="cta-button" onclick="moveToSection('code-section')">Back</button>
+    </section>
+
+    <!-- Refer Button -->
+    <button class="cta-button" onclick="moveToSection('referralFormSection')">Refer</button>
+
+    <!-- Referral Form Section -->
+    <section id="referralFormSection" class="form-section hidden">
+        <h2>Referral Form</h2>
+        <form id="referralForm" enctype="multipart/form-data" onsubmit="submitReferralForm(); return false;">
+            <label for="referralName">Your Name:</label>
+            <input type="text" id="referralName" placeholder="Enter your name" required>
+
+            <label for="referralEmail">Your Email:</label>
+            <input type="email" id="referralEmail" placeholder="Enter your email" required>
+
+            <label for="referralPhone">Your Phone Number:</label>
+            <input type="tel" id="referralPhone" placeholder="Enter your phone number" required>
+
+            <label for="referralRentalCode">Rental Serial Code:</label>
+            <input type="text" id="referralRentalCode" placeholder="Rental Serial Code" readonly>
+
+            <label for="referredEmail">Referred Person's Email:</label>
+            <input type="email" id="referredEmail" placeholder="Enter referred person's email" required>
+
+            <label for="images">Upload Referral Images (max 10 images):</label>
+            <input type="file" id="images" name="images" accept="image/*" multiple required>
+
+            <button type="submit" class="cta-button">Submit</button>
+        </form>
+        <button class="cta-button" onclick="moveToSection('initial')">Back</button>
+    </section>
+
+    <script>
+        let generatedRentalCode = '';
+
+        // Toggle the Get Started button
+        function toggleGetStarted() {
+            const checkbox = document.getElementById("agreeCheckbox");
+            const button = document.getElementById("getStartedBtn");
+            button.disabled = !checkbox.checked;
+        }
+
+        // Move to a specified section
+        function moveToSection(sectionId) {
+            // Hide all sections except narration and incentive
+            document.querySelectorAll('section:not(#narrationSection):not(#incentiveSection), .code-section').forEach((section) => {
+                section.classList.add('hidden');
+            });
+
+            // Show the target section
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+
+        // Generate a unique rental code
+        function generateRentalCode() {
+            return 'LW' + Math.random().toString(36).substr(2, 9).toUpperCase();
+        }
+
+        // Check Rental Code
+        function checkCode() {
+            const codeInput = document.getElementById("rentalCodeInput").value;
+            if (codeInput === "") {
+                generatedRentalCode = generateRentalCode();
+                document.getElementById("rentalCode").value = generatedRentalCode;
+                moveToSection('formSection');
+            } else {
+                alert("Code checked!");
+                document.getElementById("rentalCode").value = codeInput;
+                generatedRentalCode = codeInput;
+                moveToSection('formSection');
+            }
+        }
+
+        // Submit Membership Form via mailto
+        function submitForm(formId, subject) {
+            const form = document.getElementById(formId);
+            const formData = new FormData(form);
+            const email = formData.get("email");
+            const subjectText = subject || 'Membership Registration';
+            let bodyText = `Full Name: ${formData.get("name")}\nEmail: ${email}\nPhone Number: ${formData.get("phone")}\nAddress: ${formData.get("address")}\nRental Serial Code: ${formData.get("rentalCode")}`;
+
+            const mailtoLink = `mailto:mondaykingsley80@gmail.com?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(bodyText)}`;
+            window.location.href = mailtoLink;
+        }
+
+        // Submit Referral Form via mailto
+        function submitReferralForm() {
+            const form = document.getElementById('referralForm');
+            const formData = new FormData(form);
+            const referralEmail = formData.get("referralEmail");
+            const referralCode = formData.get("referralRentalCode");
+            const referredEmail = formData.get("referredEmail");
+            const subjectText = 'Referral Submission';
+            let bodyText = `Your Name: ${formData.get("referralName")}\nYour Email: ${referralEmail}\nYour Phone Number: ${formData.get("referralPhone")}\nRental Serial Code: ${referralCode}\nReferred Person's Email: ${referredEmail}`;
+
+            const mailtoLink = `mailto:mondaykingsley80@gmail.com?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(bodyText)}`;
+            window.location.href = mailtoLink;
+        }
+
+        // Show Registration Form link
+        function showRegistrationForm() {
+            moveToSection('registration');
+        }
+    </script>
+</body>
+</html>
