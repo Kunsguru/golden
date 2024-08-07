@@ -23,6 +23,7 @@
             background-color: #f9f9f9;
             border: 1px solid #ddd;
             border-radius: 5px;
+      
         }
 
         /* Button Styling */
@@ -61,13 +62,15 @@
 
     <!-- Incentive Program Section -->
     <section id="incentiveSection" class="incentive">
-        <h2>Annual Membership Incentive Program</h2>
-        <p>To subscribe as a member of Livewell Housing Solutions Ltd with an amount of 2,000 Naira annually so registered members can enjoy attractive benefits!</p>
+        <h2>Livewell Ease Rent & Properties.</h2>
+        <h3>Incentive Program</h3>
+        <p>
+Get started!!! Join for free, and enjoy the attractive benefits!</p>
         <ul>
             <li><strong>Earn 500 Naira</strong> for each successful referral of a new member.</li>
-            <li><strong>Get a 7,500 Naira Bonus</strong> when you refer 10 or more members!</li>
-            <li><strong>Special Rewards</strong> for top referrers, including gadgets and gift vouchers.</li>
-            <li>Exclusive access to member-only services and events.</li>
+            <li><strong>Special Rewards</strong> for top referrers, including gadgets and gift vouchers for the month</li>
+            <li><strong>Interested click on the "Get Started Button" down below: </strong></li>
+            
         </ul>
     </section>
     
@@ -91,30 +94,33 @@
         <button class="cta-button" id="checkCodeBtn" onclick="checkCode()">Check Code</button>
         <p id="noCodeMessage" class="hidden">Don't have a code? <a href="#" id="showRegistrationFormLink" onclick="showRegistrationForm()">Register here</a></p>
         <button class="cta-button" onclick="moveToSection('initial')">Back</button>
+        <p> NB: <strong> Dont type on the text area, simply tap the " Check Code " button.</strong></p>
     </div>
 
     <!-- Membership Form Section -->
     <section id="formSection" class="form-section hidden">
         <h2>Membership</h2>
-        <form id="membershipForm" onsubmit="submitForm('membershipForm', 'Livewell Membership'); return false;">
+        <form id="membershipForm" onsubmit="submitForm('membershipForm', 'Membership Registration'); return false;">
             <label for="name">Full Name:</label>
-            <input type="text" id="name" placeholder="Enter your full name" required>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
 
             <label for="email">Email Address:</label>
-            <input type="email" id="email" placeholder="Enter your email" required>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
             <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" placeholder="Enter your phone number" required>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
 
             <label for="address">Residential Address:</label>
-            <input type="text" id="address" placeholder="Enter your address" required>
+            <input type="text" id="address" name="address" placeholder="Enter your address" required>
 
             <label for="rentalCode">Rental Serial Code:</label>
-            <input type="text" id="rentalCode" placeholder="Rental Serial Code" readonly required>
+            <input type="text" id="rentalCode" name="rentalCode" placeholder="Rental Serial Code" readonly required>
 
             <button type="submit" class="cta-button">Submit</button>
         </form>
         <button class="cta-button" onclick="moveToSection('code-section')">Back</button>
+        
+        <p>NB:<strong>Dont type on the Rental Serial Code, what you see there is your Registration Number. So save the details well. Click on the Submit Button Simply To Proceed</strong></p>
     </section>
 
     <!-- Refer Button -->
@@ -125,19 +131,19 @@
         <h2>Referral Form</h2>
         <form id="referralForm" enctype="multipart/form-data" onsubmit="submitReferralForm(); return false;">
             <label for="referralName">Your Name:</label>
-            <input type="text" id="referralName" placeholder="Enter your name" required>
+            <input type="text" id="referralName" name="referralName" placeholder="Enter your name" required>
 
             <label for="referralEmail">Your Email:</label>
-            <input type="email" id="referralEmail" placeholder="Enter your email" required>
+            <input type="email" id="referralEmail" name="referralEmail" placeholder="Enter your email" required>
 
             <label for="referralPhone">Your Phone Number:</label>
-            <input type="tel" id="referralPhone" placeholder="Enter your phone number" required>
+            <input type="tel" id="referralPhone" name="referralPhone" placeholder="Enter your phone number" required>
 
             <label for="referralRentalCode">Rental Serial Code:</label>
-            <input type="text" id="referralRentalCode" placeholder="Rental Serial Code" readonly>
+            <input type="text" id="referralRentalCode" name="referralRentalCode" placeholder="Rental Serial Code" readonly>
 
             <label for="referredEmail">Referred Person's Email:</label>
-            <input type="email" id="referredEmail" placeholder="Enter referred person's email" required>
+            <input type="email" id="referredEmail" name="referredEmail" placeholder="Enter referred person's email" required>
 
             <label for="images">Upload Referral Images (max 10 images):</label>
             <input type="file" id="images" name="images" accept="image/*" multiple required>
@@ -221,3 +227,5 @@
     </script>
 </body>
 </html>
+
+
