@@ -23,7 +23,6 @@
             background-color: #f9f9f9;
             border: 1px solid #ddd;
             border-radius: 5px;
-      
         }
 
         /* Button Styling */
@@ -57,23 +56,19 @@
     <!-- Narration Section -->
     <section id="narrationSection" class="narration">
         <p>Earn extra income while marketing houses for sale as a marketer for Livewell Housing Solutions Ltd. Get your agent commission for property rentals, leases, and sales. Join us to sell our three core services: Ease Rent, Lease Plan, and Cooperative Housing.</p>
-        <p>Invite your friends, neighbors, workmates, course mates, and anyone else to join. Share on your online social pages. Earn incentives when someone registers as a member with a 2,000 Naira Membership fee, and 1000 Naira for renewal of Membership per annum.
-        </p>
+        <p>Invite your friends, neighbors, workmates, course mates, and anyone else to join. Share on your online social pages. Earn incentives when someone registers as a member with a 2,000 Naira Membership fee, and 1000 Naira for renewal of Membership per annum.</p>
     </section>
 
     <!-- Incentive Program Section -->
     <section id="incentiveSection" class="incentive">
         <h2>Livewell Ease Rent & Properties.</h2>
         <h3>Incentive Program</h3>
-        <p>
-Get started!!! Join for free, and enjoy the attractive benefits!</p>
+        <p>Get started!!! Join for free, and enjoy the attractive benefits!</p>
         <ul>
             <li><strong>Earn 500 Naira</strong> for each successful referral of a new member.</li>
             <li><strong>Special Rewards</strong> for top referrers, including gadgets and gift vouchers for the month</li>
             <li><strong>Interested click on the "Get Started Button" down below: </strong></li>
-            
         </ul>
-
         <p>NB: <strong>Please Scroll Down To Continue The Registration Processes</strong></p>
     </section>
     
@@ -82,13 +77,14 @@ Get started!!! Join for free, and enjoy the attractive benefits!</p>
 
     <!-- Get Started Button -->
     <button class="cta-button" onclick="moveToSection('registration')">Get Started</button>
+    
+    <a href="https://job-link-okun.onrender.com/" class="cta-button" target="_blank">Refer</a>
 
     <!-- Registration Section -->
     <section id="registration" class="registration hidden">
         <h2>Become an Incentive Member</h2>
         <input type="checkbox" id="agreeCheckbox" onclick="toggleGetStarted()"> I agree to the terms and conditions.
         <button class="cta-button" id="getStartedBtn" disabled onclick="moveToSection('code-section')">Get Started</button>
-        
     </section>
 
     <!-- Rental Code Section -->
@@ -98,7 +94,7 @@ Get started!!! Join for free, and enjoy the attractive benefits!</p>
         <button class="cta-button" id="checkCodeBtn" onclick="checkCode()">Check Code</button>
         <p id="noCodeMessage" class="hidden">Don't have a code? <a href="#" id="showRegistrationFormLink" onclick="showRegistrationForm()">Register here</a></p>
         <button class="cta-button" onclick="moveToSection('initial')">Back</button>
-        <p> NB: <strong> Dont type on the text area, simply tap the " Check Code " button.</strong></p>
+        <p> NB: <strong> Don't type on the text area, simply tap the "Check Code" button.</strong></p>
     </div>
 
     <!-- Membership Form Section -->
@@ -123,12 +119,11 @@ Get started!!! Join for free, and enjoy the attractive benefits!</p>
             <button type="submit" class="cta-button">Submit</button>
         </form>
         <button class="cta-button" onclick="moveToSection('code-section')">Back</button>
-        
-        <p>NB:<strong>Don't type on the Rental Serial Code, what you see there is your Registration Number. So save the details well,to recieve your claims. Click on the Submit Button Simply To Proceed</strong></p>
+        <p>NB:<strong>Don't type on the Rental Serial Code, what you see there is your Registration Number. So save the details well, to receive your claims. Click on the Submit Button Simply To Proceed</strong></p>
     </section>
 
     <!-- Refer Button -->
-    <button class="cta-button" onclick="moveToSection('referralFormSection')">Refer</button>
+    
 
     <!-- Referral Form Section -->
     <section id="referralFormSection" class="form-section hidden">
@@ -144,12 +139,11 @@ Get started!!! Join for free, and enjoy the attractive benefits!</p>
             <input type="tel" id="referralPhone" name="referralPhone" placeholder="Enter your phone number" required>
 
             <label for="referralRentalCode">Rental Serial Code:</label>
-            <input type="text" id="referralRentalCode" name="referralRentalCode" placeholder="Rental Serial Code" readonly>
+            <input type="text" id="referralRentalCode" name="referralRentalCode" placeholder="Rental Serial Code" readonly required>
 
             <label for="referredEmailIncentive">Type Your Incentive Member Email:</label>
             <input type="email" id="referredEmailIncentive" name="referredEmailIncentive" placeholder="Incentive Membership email" required>
 
-            
             <button type="submit" class="cta-button">Submit</button>
         </form>
         <button class="cta-button" onclick="moveToSection('initial')">Back</button>
@@ -178,7 +172,7 @@ Get started!!! Join for free, and enjoy the attractive benefits!</p>
 
         // Generate a unique rental code
         function generateRentalCode() {
-            return 'LW' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            return 'RR' + Math.random().toString(36).substr(2, 9).toUpperCase();
         }
 
         // Check Rental Code
@@ -196,38 +190,47 @@ Get started!!! Join for free, and enjoy the attractive benefits!</p>
             }
         }
 
-        // Submit Membership Form via mailto
+        // Submit Membership Form via Email
         function submitForm(formId, subject) {
             const form = document.getElementById(formId);
             const formData = new FormData(form);
-            const email = formData.get("email");
-            const subjectText = subject || 'Membership Registration';
-            let bodyText = `Full Name: ${formData.get("name")}\nEmail: ${email}\nPhone Number: ${formData.get("phone")}\nAddress: ${formData.get("address")}\nRental Serial Code: ${formData.get("rentalCode")}`;
+            const email = "mondaykingsley80@gmail.com";
+            const body = `Subject: ${subject}\n\n` +
+                `Full Name: ${formData.get("name")}\n` +
+                `Email Address: ${formData.get("email")}\n` +
+                `Phone Number: ${formData.get("phone")}\n` +
+                `Address: ${formData.get("address")}\n` +
+                `Rental Serial Code: ${formData.get("rentalCode")}`;
 
-            const mailtoLink = `mailto:mondaykingsley80@gmail.com?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(bodyText)}`;
-            window.location.href = mailtoLink;
+            window.open(`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+            form.reset();
         }
 
-        // Submit Referral Form via mailto
+        // Submit Referral Form via Email
         function submitReferralForm() {
             const form = document.getElementById('referralForm');
             const formData = new FormData(form);
-            const referralEmail = formData.get("referralEmail");
-            const referralCode = formData.get("referralRentalCode");
-            const referredEmailIncentive = formData.get("referredEmailIncentive");
-            const subjectText = 'Referral Submission';
-            let bodyText = `Your Name: ${formData.get("referralName")}\nYour Email: ${referralEmail}\nYour Phone Number: ${formData.get("referralPhone")}\nRental Serial Code: ${referralCode}\nReferred Person's Email: ${referredEmailIncentive}`;
+            const email = "mondaykingsley80@gmail.com";
+            const body = `Subject: Referral Form Submission\n\n` +
+                `Your Name: ${formData.get("referralName")}\n` +
+                `Your Email: ${formData.get("referralEmail")}\n` +
+                `Your Phone Number: ${formData.get("referralPhone")}\n` +
+                `Rental Serial Code: ${formData.get("referralRentalCode")}\n` +
+                `Incentive Member Email: ${formData.get("referredEmailIncentive")}`;
 
-            const mailtoLink = `mailto:mondaykingsley80@gmail.com?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(bodyText)}`;
-            window.location.href = mailtoLink;
+            window.open(`mailto:${email}?subject=Referral Form Submission&body=${encodeURIComponent(body)}`);
+            form.reset();
         }
 
-        // Show Registration Form link
+        // Show Registration Form
         function showRegistrationForm() {
-            moveToSection('registration');
+            document.getElementById('code-section').classList.add('hidden');
+            document.getElementById('referralFormSection').classList.remove('hidden');
         }
     </script>
 </body>
 </html>
+
+
 
 
