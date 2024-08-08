@@ -82,9 +82,10 @@ Get started!!! Join for free, and enjoy the attractive benefits!</p>
 
     <!-- Registration Section -->
     <section id="registration" class="registration hidden">
-        <h2>Become a Referred Member</h2>
+        <h2>Become an Incentive Member</h2>
         <input type="checkbox" id="agreeCheckbox" onclick="toggleGetStarted()"> I agree to the terms and conditions.
         <button class="cta-button" id="getStartedBtn" disabled onclick="moveToSection('code-section')">Get Started</button>
+        <p>NB: <strong>Please Scroll Down To Continue The Registration Processes</strong></p>
     </section>
 
     <!-- Rental Code Section -->
@@ -142,12 +143,10 @@ Get started!!! Join for free, and enjoy the attractive benefits!</p>
             <label for="referralRentalCode">Rental Serial Code:</label>
             <input type="text" id="referralRentalCode" name="referralRentalCode" placeholder="Rental Serial Code" readonly>
 
-            <label for="referredEmail">Referred Person's Email:</label>
-            <input type="email" id="referredEmail" name="referredEmail" placeholder="Enter referred person's email" required>
+            <label for="referredEmailIncentive">Type Your Incentive Member Email:</label>
+            <input type="email" id="referredEmailIncentive" name="referredEmailIncentive" placeholder="Enter referred person's email" required>
 
-            <label for="images">Upload Referral Images (max 10 images):</label>
-            <input type="file" id="images" name="images" accept="image/*" multiple required>
-
+            
             <button type="submit" class="cta-button">Submit</button>
         </form>
         <button class="cta-button" onclick="moveToSection('initial')">Back</button>
@@ -212,9 +211,9 @@ Get started!!! Join for free, and enjoy the attractive benefits!</p>
             const formData = new FormData(form);
             const referralEmail = formData.get("referralEmail");
             const referralCode = formData.get("referralRentalCode");
-            const referredEmail = formData.get("referredEmail");
+            const referredEmailIncentive = formData.get("referredEmailIncentive");
             const subjectText = 'Referral Submission';
-            let bodyText = `Your Name: ${formData.get("referralName")}\nYour Email: ${referralEmail}\nYour Phone Number: ${formData.get("referralPhone")}\nRental Serial Code: ${referralCode}\nReferred Person's Email: ${referredEmail}`;
+            let bodyText = `Your Name: ${formData.get("referralName")}\nYour Email: ${referralEmail}\nYour Phone Number: ${formData.get("referralPhone")}\nRental Serial Code: ${referralCode}\nReferred Person's Email: ${referredEmailIncentive}`;
 
             const mailtoLink = `mailto:mondaykingsley80@gmail.com?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(bodyText)}`;
             window.location.href = mailtoLink;
